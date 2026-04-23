@@ -133,15 +133,15 @@ const UserTracking = () => {
                 </div>
                 <div className="flex flex-wrap items-center gap-4">
                     {/* Unified Dashboard Stats */}
-                    <div className="flex items-center gap-6 px-6 py-3 bg-card border border-panel-border rounded-2xl">
+                    <div className="flex items-center gap-6 px-6 py-3 glass-card" style={{ padding: '0.75rem 1.5rem', borderRadius: '16px' }}>
                         <div className="flex flex-col">
                             <span className="text-[10px] text-muted font-bold uppercase">Active Fleet</span>
-                            <span className="text-xl font-black text-white">{activeCount} <span className="text-xs text-primary font-bold">BUSES</span></span>
+                            <span className="text-xl font-black" style={{ color: 'white' }}>{activeCount} <span className="text-xs font-bold" style={{ color: 'var(--primary)' }}>BUSES</span></span>
                         </div>
-                        <div className="w-[1px] h-8 bg-panel-border"></div>
+                        <div className="w-[1px] h-8" style={{ background: 'var(--panel-border)' }}></div>
                         <div className="flex flex-col">
                             <span className="text-[10px] text-muted font-bold uppercase">System Health</span>
-                            <span className="text-xl font-black text-accent">100% <span className="text-xs text-accent font-bold">LIVE</span></span>
+                            <span className="text-xl font-black" style={{ color: 'var(--accent)' }}>100% <span className="text-xs font-bold">LIVE</span></span>
                         </div>
                     </div>
                     
@@ -200,8 +200,16 @@ const UserTracking = () => {
                                 <select 
                                     className="w-full bg-white/5 border border-white/10 rounded-lg p-2 text-xs"
                                     onChange={(e) => {
-                                        const stop = JSON.parse(e.target.value);
-                                        setDestinationStop(stop);
+                                        if (!e.target.value) {
+                                            setDestinationStop(null);
+                                            return;
+                                        }
+                                        try {
+                                            const stop = JSON.parse(e.target.value);
+                                            setDestinationStop(stop);
+                                        } catch (err) {
+                                            console.error("Failed to parse stop:", err);
+                                        }
                                     }}
                                     value={destinationStop ? JSON.stringify(destinationStop) : ''}
                                 >
