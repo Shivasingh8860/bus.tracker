@@ -163,7 +163,7 @@ input::placeholder {
 
 /* Layout Utilities */
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -200,13 +200,17 @@ input::placeholder {
   gap: 1.5rem;
 }
 
+.layout-sidebar { 
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 1.5rem;
+}
+
 @media (min-width: 1024px) {
   .layout-sidebar { 
-    display: grid;
-    grid-template-columns: 1fr 340px; 
+    grid-template-columns: 1fr 380px; 
     gap: 2rem;
   }
-  .layout-equal { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 768px) {

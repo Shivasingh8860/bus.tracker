@@ -126,22 +126,36 @@ const UserTracking = () => {
 
     return (
         <div className="container" style={{ paddingBottom: '2rem' }}>
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-8">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-8">
                 <div>
-                    <h1 className="title-gradient" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>Live Tracking</h1>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Real-time campus transit intelligence</p>
+                    <div className="flex items-center gap-3 mb-2">
+                        <h1 className="title-gradient m-0" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.8rem)' }}>Transit Intelligence</h1>
+                        <span className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-tighter">Live v2.4</span>
+                    </div>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', margin: 0 }}>Real-time campus fleet oversight & predictive arrival engine</p>
                 </div>
-                <div className="flex items-center gap-3">
-                    <button 
-                        onClick={() => setBatterySaver(!batterySaver)}
-                        className={`flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all ${batterySaver ? 'bg-warning/20 border-warning text-warning' : 'bg-white/5 border-white/10 text-muted'}`}
-                        style={{ fontSize: '0.65rem', fontWeight: 800 }}
-                    >
-                        {batterySaver ? '🔋 SAVER ON' : '🔋 SAVER OFF'}
-                    </button>
-                    <div className="flex items-center gap-2 px-4 py-2 bg-card rounded-full border border-panel-border" style={{ background: 'var(--bg-card)', border: '1px solid var(--panel-border)', borderRadius: '100px' }}>
-                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: activeCount > 0 ? 'var(--accent)' : 'var(--danger)', boxShadow: activeCount > 0 ? '0 0 10px var(--accent)' : 'none' }}></div>
-                        <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>{activeCount} active buses</span>
+                <div className="flex flex-wrap items-center gap-4">
+                    {/* Unified Dashboard Stats */}
+                    <div className="flex items-center gap-6 px-6 py-3 bg-card border border-panel-border rounded-2xl">
+                        <div className="flex flex-col">
+                            <span className="text-[10px] text-muted font-bold uppercase">Active Fleet</span>
+                            <span className="text-xl font-black text-white">{activeCount} <span className="text-xs text-primary font-bold">BUSES</span></span>
+                        </div>
+                        <div className="w-[1px] h-8 bg-panel-border"></div>
+                        <div className="flex flex-col">
+                            <span className="text-[10px] text-muted font-bold uppercase">System Health</span>
+                            <span className="text-xl font-black text-accent">100% <span className="text-xs text-accent font-bold">LIVE</span></span>
+                        </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-3">
+                        <button 
+                            onClick={() => setBatterySaver(!batterySaver)}
+                            className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all ${batterySaver ? 'bg-warning/20 border-warning text-warning' : 'bg-white/5 border-white/10 text-muted'}`}
+                            style={{ fontSize: '0.75rem', fontWeight: 800 }}
+                        >
+                            {batterySaver ? '🔋 SAVER ON' : '🔋 POWER OPTIMIZED'}
+                        </button>
                     </div>
                 </div>
             </div>
@@ -151,7 +165,11 @@ const UserTracking = () => {
                     className="overflow-hidden shadow-2xl map-responsive-wrapper"
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    style={{ borderRadius: 'var(--radius-md)', border: '1px solid var(--panel-border)' }}
+                    style={{ 
+                        borderRadius: 'var(--radius-md)', 
+                        border: '1px solid var(--panel-border)',
+                        height: 'clamp(400px, 60vh, 700px)' // Taller on desktop
+                    }}
                 >
                     <MapComponent
                         selectedRouteId={selectedRoute}
