@@ -128,11 +128,8 @@ const UserTracking = () => {
         <div className="container" style={{ paddingBottom: '2rem' }}>
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-8">
                 <div>
-                    <div className="flex items-center gap-3 mb-2">
-                        <h1 className="title-gradient m-0" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.8rem)' }}>Transit Intelligence</h1>
-                        <span className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-tighter">Live v2.4</span>
-                    </div>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', margin: 0 }}>Real-time campus fleet oversight & predictive arrival engine</p>
+                    <h1 className="title-gradient m-0" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>Live Tracking</h1>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '0.5rem' }}>Real-time campus transit intelligence</p>
                 </div>
                 <div className="flex flex-wrap items-center gap-4">
                     {/* Unified Dashboard Stats */}
