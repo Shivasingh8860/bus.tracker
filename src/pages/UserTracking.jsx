@@ -441,58 +441,55 @@ const UserTracking = () => {
                         exit={{ y: 100, opacity: 0 }}
                         style={{ 
                             position: 'fixed', 
-                            bottom: '1.5rem', 
+                            bottom: '4rem', 
                             left: '50%', 
                             transform: 'translateX(-50%)', 
-                            zIndex: 2000, 
-                            width: 'calc(100% - 2rem)', 
-                            maxWidth: '500px' 
+                            zIndex: 2500, 
+                            width: 'fit-content', 
+                            maxWidth: '90%' 
                         }}
                     >
                         <div className="glass-card" style={{ 
-                            background: 'rgba(18, 18, 21, 0.95)', 
-                            backdropFilter: 'blur(20px)', 
+                            background: 'rgba(18, 18, 21, 0.9)', 
+                            backdropFilter: 'blur(16px)', 
                             border: '1px solid var(--accent)',
-                            padding: '1.25rem',
-                            boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
+                            padding: '0.6rem 1rem',
+                            borderRadius: '100px',
+                            boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
                             display: 'flex',
                             alignItems: 'center',
-                            justifyContent: 'between',
-                            gap: '1.5rem'
+                            gap: '0.75rem'
                         }}>
-                            <div className="flex items-center gap-4 flex-1">
+                            <div className="flex items-center gap-3">
                                 <div style={{ 
-                                    width: '56px', height: '56px', borderRadius: '16px', 
+                                    width: '32px', height: '32px', borderRadius: '50%', 
                                     background: 'var(--accent)', display: 'flex', 
-                                    alignItems: 'center', justifyContent: 'center', 
-                                    boxShadow: '0 10px 20px var(--accent-glow)',
-                                    position: 'relative'
+                                    alignItems: 'center', justifyContent: 'center'
                                 }}>
-                                    <BusFront size={28} color="white" />
-                                    <div style={{ position: 'absolute', top: '-5px', right: '-5px', background: 'var(--danger)', width: '12px', height: '12px', borderRadius: '50%', border: '2px solid white' }}></div>
+                                    <BusFront size={16} color="white" />
                                 </div>
-                                <div>
-                                    <div className="flex items-center gap-2 mb-1">
-                                        <h4 style={{ margin: 0, fontSize: '1rem' }}>Bus #{nearestBus.id.slice(-2)}</h4>
-                                        <span className="text-[10px] bg-accent/10 text-accent px-1.5 py-0.5 rounded font-black">NEAREST</span>
+                                <div className="flex flex-col">
+                                    <div className="flex items-center gap-2">
+                                        <h4 style={{ margin: 0, fontSize: '0.8rem', fontWeight: 800 }}>#{nearestBus.id.slice(-2)}</h4>
+                                        <span className="text-[8px] bg-accent/20 text-accent px-1.5 py-0.5 rounded-full font-black">NEAREST</span>
                                     </div>
-                                    <div className="flex items-center gap-3 text-muted" style={{ fontSize: '0.75rem' }}>
-                                        <div className="flex items-center gap-1"><Clock size={12} /> {Math.max(1, Math.round(nearestBus.dist * 3))}m</div>
-                                        <div className="flex items-center gap-1"><Navigation size={12} /> {nearestBus.dist.toFixed(2)}km</div>
-                                        <div className="flex items-center gap-1"><UsersIcon size={12} /> {nearestBus.crowdStatus}</div>
+                                    <div className="flex items-center gap-2 text-muted" style={{ fontSize: '0.65rem' }}>
+                                        <span>{Math.max(1, Math.round(nearestBus.dist * 3))}m</span>
+                                        <span>•</span>
+                                        <span>{nearestBus.dist.toFixed(1)}km</span>
                                     </div>
                                 </div>
                             </div>
                             <button 
                                 className="btn btn-primary" 
-                                style={{ padding: '0.75rem 1.25rem', borderRadius: '12px' }}
+                                style={{ padding: '0.4rem 0.8rem', borderRadius: '50px', fontSize: '0.7rem' }}
                                 onClick={() => {
                                     setSelectedRoute(nearestBus.routeId);
                                     setFocusedBusId(nearestBus.id);
                                     setIsFollowMode(true);
                                 }}
                             >
-                                Track Now
+                                Track
                             </button>
                         </div>
                     </motion.div>
